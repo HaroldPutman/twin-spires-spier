@@ -1,0 +1,15 @@
+{
+  "name": "twin-spires-spier",
+  "version": "1.0.0",
+  "description": "Scrape the churchill downs site for horse names.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Harold Putman <h.putman@ieee.org>",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "*",
+    "puppeteer": "^9.0.0"
+  }
+}
