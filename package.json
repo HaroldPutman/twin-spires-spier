@@ -4,11 +4,12 @@
   "description": "Scrape a public website for horse names.",
   "main": "index.js",
   "scripts": {
+    "start": "node index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Harold Putman <h.putman@ieee.org>",
   "license": "ISC",
   "dependencies": {
-    "puppeteer": "^13.7.0"
+    "puppeteer": "^22.7.1"
   }
 }

@@ -1,6 +1,4 @@
 const puppeteer = require('puppeteer');
-const { data } = require('cheerio/lib/api/attributes');
-const { replaceWith } = require('cheerio/lib/api/manipulation');
 
 /**
  * Scrape horse information for a particular race
@@ -90,10 +88,27 @@ function generateCSV(raceData) {
   });
 }
 
+/**
+ * Returns the first Saturday in May of the current year.
+ * @returns {String} The first Saturday in May of the current year in mm/dd/yyyy format.
+ */
+function firstSaturdayInMay() {
+  // Start with May 1st of this year
+  const date = new Date();
+  date.setMonth(4); // May
+  date.setDate(1);
+
+  // figure out how many days to get to a Satuyrday
+  const dayOfWeek = date.getDay();
+  const daysToSaturday = 6 - dayOfWeek;
+  date.setDate(date.getDate() + daysToSaturday);
+  return date.toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: 'numeric' });
+}
+
 (async () => {
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
-  const date = '05/07/2022';
+  const date = firstSaturdayInMay();
   const results = await equibase(page, date);
   generateCSV(results);
   await browser.close()
